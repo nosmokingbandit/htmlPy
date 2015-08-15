@@ -10,15 +10,15 @@ Welcome to htmlPy's documentation!
 **HTML5+CSS3+Javascript based GUI libary in Python**
 
 
-.. image:: https://travis-ci.org/amol-mandhane/htmlPy.svg?branch=master
+.. image:: https://img.shields.io/travis/amol-mandhane/htmlPy.svg
    :target: https://travis-ci.org/amol-mandhane/htmlPy
    :alt: Travis CI build status
 
-.. image:: https://pypip.in/v/htmlPy/badge.png
+.. image:: https://img.shields.io/pypi/v/htmlPy.svg
     :target: https://pypi.python.org/pypi/htmlPy/
     :alt: Latest PyPI version
 
-.. image:: https://pypip.in/d/htmlPy/badge.png
+.. image:: https://img.shields.io/pypi/dm/htmlPy.svg
     :target: https://pypi.python.org/pypi/htmlPy/
     :alt: Number of PyPI downloads
 
@@ -34,6 +34,7 @@ You can get the source at `GitHub repository <https://github.com/amol-mandhane/h
     installation
     pyqt_installation
     quickstart
+    important
     tutorials
     reference
 

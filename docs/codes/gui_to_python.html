@@ -1,0 +1,21 @@
+<a href="#" data-href="/ClassName/function_name" id="link">GUI clickable link</a>
+<!-- The "a" tag needs to have unique ID.
+The href of "a" tag has to be "#". The ClassName and function_name have to
+be set in data-href attribute as displayed above. The "a" tag can be
+styled using CSS with other HTML elements inside it -->
+
+
+<form action="#" data-action="/ClassName/form_function_name" id="form">
+    <input type="text" id="form_input" name="name">
+    <input type="submit" value="Submit" id="form_submit">
+</form>
+<!-- The "form" tag needs to have unique ID.
+The action of "a" tag has to be "#". The ClassName and form_function_name
+have to be set in data-action attribute as displayed above. The "form" tag
+can be styled using CSS with other HTML elements inside it -->
+
+<script>
+ClassName.javascript_function();
+// You can treat the class inherited from htmlPy.Bridge (in this case, ClassName)
+// as a javascript object.
+</script>
