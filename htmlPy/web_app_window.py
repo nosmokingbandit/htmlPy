@@ -1,3 +1,8 @@
+from PyQt4 import QtGui, QtWebKit, QtCore
+from PyQt4.QtCore import QUrl
+import sys
+
+
 class WebAppWindow:
 
     def __init__(self, title="Application", width=800, height=600, x_pos=10, y_pos=10, maximized=False, flash=False, developer_mode=False):
@@ -13,7 +18,6 @@ class WebAppWindow:
         flash   -- Boolean variable to use flash plugin in the app. Default = False
         developer_mode -- Boolean variable to use developer tools in the app. Default = False
         """
-        from PyQt4 import QtGui, QtWebKit, QtCore
 
         self.app = QtGui.QApplication([])
         web_app = QtWebKit.QWebView()
@@ -60,7 +64,6 @@ class WebAppWindow:
         Arguments:
         link -- The web link of the HTML to be rendered.
         """
-        from PyQt4.QtCore import QUrl
         self.link = link
         self.web_app.load(QUrl(link))
 
@@ -75,7 +78,7 @@ class WebAppWindow:
         onstart_callback -- Function to be called when application window is loaded. Default = None
         onstart_callback -- Function to be called when application window is closed. Default = None
         """
-        import sys
+
         self.window.show()
 
         if onstart_callback is not None:

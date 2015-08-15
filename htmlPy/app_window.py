@@ -1,4 +1,9 @@
+from PyQt4 import QtGui, QtWebKit, QtCore
+from PyQt4.QtCore import QString
+from bridge_helper import bridge_helper
 import jinja2, os
+import sys
+
 
 class AppWindow:
 
@@ -15,7 +20,6 @@ class AppWindow:
         flash   -- Boolean variable to use flash plugin in the app. Default = False
         developer_mode -- Boolean variable to use developer tools in the app. Default = False
         """
-        from PyQt4 import QtGui, QtWebKit, QtCore
 
         self.app = QtGui.QApplication([])
         web_app = QtWebKit.QWebView()
@@ -53,7 +57,6 @@ class AppWindow:
         self.web_app = web_app
         self.window = window
 
-        from bridge_helper import bridge_helper
         self.bridges = []
         self.register(bridge_helper)
 
@@ -93,7 +96,7 @@ class AppWindow:
         onstart_callback -- Function to be called when application window is loaded. Default = None
         onstart_callback -- Function to be called when application window is closed. Default = None
         """
-        import sys
+
         self.window.show()
 
         if onstart_callback is not None:
@@ -135,7 +138,6 @@ class AppWindow:
         Keyword arguments:
         onset_callback -- The function to be called after setting HTML. Default = None
         """
-        from PyQt4.QtCore import QString
 
         modified_html = html.replace("</body>", "<script>" + self.__bridge_helper_script + "</script></body>")
 
