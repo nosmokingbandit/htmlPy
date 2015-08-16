@@ -14,6 +14,8 @@ addons:
     - python-qt4-dev
     - python-sip
     - python-sip-dev
+    - qt4-dev-tools
+    - pyqt4-dev-tools
 
 # command to install dependencies
 install:
