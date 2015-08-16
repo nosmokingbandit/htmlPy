@@ -32,6 +32,20 @@ extensions = [
     'sphinx.ext.autodoc',
 ]
 
+
+from mock import Mock as MagicMock
+
+
+class Mock(MagicMock):
+    @classmethod
+    def __getattr__(cls, name):
+        return Mock()
+
+MOCK_MODULES = ['pygtk', 'gtk', 'gobject', 'argparse', 'numpy', 'pandas'
+                'PyQt4', 'sip']
+sys.modules.update((mod_name, Mock()) for mod_name in MOCK_MODULES)
+
+
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
