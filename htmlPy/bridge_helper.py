@@ -22,7 +22,7 @@ class BridgeHelper(Bridge):
         Keyword arguments:
         filter -- A string which defines file extension filter for the file dialog. The filter can be a string of format
         "All files (*.*);;JPEG (*.jpg *.jpeg);;TIFF (*.tif)"
-         Default = "" (All files)
+        Default = "" (All files)
         """
         win = QtGui.QMainWindow()
         return QtGui.QFileDialog.getOpenFileName(win, 'Open file', ".", QString(filter))

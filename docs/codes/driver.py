@@ -12,8 +12,8 @@ app = htmlPy.AppWindow("Application", maximized=True, flash=True)
 
 
 # GUI configurations
-app.set_asset_path(BASE_DIR + '/static/')
-app.set_template_path(BASE_DIR + "/templates/")
+app.set_asset_path(os.path.join(BASE_DIR, "static/"))
+app.set_template_path(os.path.join(BASE_DIR, "templates/"))
 
 app.web_app.setMinimumWidth(1024)
 app.web_app.setMinimumHeight(768)
