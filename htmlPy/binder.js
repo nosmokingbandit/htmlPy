@@ -84,6 +84,7 @@ var bind_all = function () {
                     button.innerHTML = "Choose file";
                     button.setAttribute("data-display", fileboxname + "_path");
                     button.setAttribute("data-filter", input.getAttribute("data-filter"));
+                    button.setAttribute("data-filemode", input.getAttribute("data-filemode"));
                     button.onclick = file_dialog;
 
                     input.parentNode.insertBefore(disabledInput, input.nextSibling);
