@@ -22,8 +22,8 @@ class GUIHelper(htmlPy.Object):
         """
         print(string)
 
-    @htmlPy.Slot(str, result=str)
-    def file_dialog(self, filters="[]"):
+    @htmlPy.Slot(str, str, result=str)
+    def file_dialog(self, filemode="file", filters="[]"):
         """ Opens a file selection dialog with given extension filter.
 
         HTML file inputs cannot be directly used with :py:class:`htmlPy.AppGUI`
@@ -32,16 +32,32 @@ class GUIHelper(htmlPy.Object):
         is automated with HTML file input.
 
         Keyword arguments:
+            filemode(str): A string of which style dialog to use. "file" and
+                "directory" are currently supported.
             filters (str): A JSON array of javascript objects of type {"title":
                 str (Title of the file extension), "extensions": str (space
                 separated list of extension wildcards)}. Example ``[{"title":
                 "JPEG files", "extensions": "*.jpg *.jpeg"}, {"title":
                 "PNG files", "extensions": "*.png"}]``
+                Applies only to filemode="file"
 
         """
         extensions = json.loads(filters)
         extensions_filter = ";;".join(map(lambda e: "{} ({})".format(
             e["title"], e["extensions"]), extensions))
         window = QtGui.QMainWindow()
-        return QtGui.QFileDialog.getOpenFileName(window, "Select file", ".",
-                                                 extensions_filter)[0]
+
+        dialog = QtGui.QFileDialog(window)
+
+        if filemode == "directory":
+            dialog.setFileMode(QtGui.QFileDialog.Directory)
+        else:
+            dialog.setFileMode(QtGui.QFileDialog.ExistingFile)
+            dialog.setFilter(extensions_filter)
+
+        if dialog.exec_():
+            filenames = dialog.selectedFiles()
+            return filenames[0]
+        else:
+            return ""
+

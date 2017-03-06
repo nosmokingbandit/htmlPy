@@ -41,11 +41,15 @@ var file_dialog = function (e) {
     e.preventDefault();
     var id_of_pseudo_filebox = e.target.getAttribute("data-display");
     var ext_filter_json = e.target.getAttribute("data-filter");
+    var filemode = e.target.getAttribute("data-filemode");
 
     if (ext_filter_json === null || ext_filter_json === "null")
         ext_filter_json = '[{"title": "Any file", "extensions": "*.*"}]';
 
-    var dialog = GUIHelper.file_dialog(ext_filter_json);
+    if (filemode === null || filemode === "null")
+        filemode = 'file';
+
+    var dialog = GUIHelper.file_dialog(filemode, ext_filter_json);
     document.getElementById(id_of_pseudo_filebox).value = dialog;
 
     return false;
