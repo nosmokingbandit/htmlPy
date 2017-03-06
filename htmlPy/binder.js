@@ -83,7 +83,7 @@ var bind_all = function () {
                     var button = document.createElement("button");
                     button.innerHTML = "Choose file";
                     button.setAttribute("data-display", fileboxname + "_path");
-                    button.setAttribute("data-filter", input.getAttribute("data-filter"));
+                    button.setAttribute("data-filter", input.getAttribute("data-filter") || "[]");
                     button.setAttribute("data-filemode", input.getAttribute("data-filemode"));
                     button.onclick = file_dialog;
 
