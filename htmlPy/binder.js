@@ -66,7 +66,7 @@ var bind_all = function () {
         if(!forms[fi].classList.contains("htmlpy-activated")){
             forms[fi].onsubmit = form_bind;
             form = forms[fi];
-            for (i = 0, ii = form.length; i < ii; ++i) {
+            for (var i = form.length - 1; i >= 0; i--) {
                 var input = form[i];
                 if (input.type === "file") {
                     var fileboxname = input.getAttribute("name");
@@ -86,7 +86,6 @@ var bind_all = function () {
                     input.parentNode.insertBefore(button, disabledInput.nextSibling);
 
                     input.style.display = "none";
-                    form[i].remove();
                 }
             }
             forms[fi].classList.add("htmlpy-activated");
