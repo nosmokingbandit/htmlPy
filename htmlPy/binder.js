@@ -41,11 +41,15 @@ var file_dialog = function (e) {
     e.preventDefault();
     var id_of_pseudo_filebox = e.target.getAttribute("data-display");
     var ext_filter_json = e.target.getAttribute("data-filter");
+    var filemode = e.target.getAttribute("data-filemode");
 
     if (ext_filter_json === null || ext_filter_json === "null")
         ext_filter_json = '[{"title": "Any file", "extensions": "*.*"}]';
 
-    var dialog = GUIHelper.file_dialog(ext_filter_json);
+    if (filemode === null || filemode === "null")
+        filemode = 'file';
+
+    var dialog = GUIHelper.file_dialog(filemode, ext_filter_json);
     document.getElementById(id_of_pseudo_filebox).value = dialog;
 
     return false;
@@ -66,7 +70,7 @@ var bind_all = function () {
         if(!forms[fi].classList.contains("htmlpy-activated")){
             forms[fi].onsubmit = form_bind;
             form = forms[fi];
-            for (i = 0, ii = form.length; i < ii; ++i) {
+            for (var i = form.length - 1; i >= 0; i--) {
                 var input = form[i];
                 if (input.type === "file") {
                     var fileboxname = input.getAttribute("name");
@@ -79,14 +83,14 @@ var bind_all = function () {
                     var button = document.createElement("button");
                     button.innerHTML = "Choose file";
                     button.setAttribute("data-display", fileboxname + "_path");
-                    button.setAttribute("data-filter", input.getAttribute("data-filter"));
+                    button.setAttribute("data-filter", input.getAttribute("data-filter") || "[]");
+                    button.setAttribute("data-filemode", input.getAttribute("data-filemode"));
                     button.onclick = file_dialog;
 
                     input.parentNode.insertBefore(disabledInput, input.nextSibling);
                     input.parentNode.insertBefore(button, disabledInput.nextSibling);
 
                     input.style.display = "none";
-                    form[i].remove();
                 }
             }
             forms[fi].classList.add("htmlpy-activated");
